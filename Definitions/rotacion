@@ -1,0 +1,9 @@
+
+La rotación es un movimiento definido en un determinado espacio que conserva al menos un punto en su posición original.
+Se determina por estos tres elementos:
+Un ángulo que determina la amplitud de la rotación.
+Un punto llamado centro de rotación.
+Un sentido de la rotación que puede ser del mismo sentido de las agujas del reloj o en sentido contrario.
+​
+Propiedades:
+.El centro de giro pertenece a la mediatriz de todo segmento, cuyos extremos se corresponden.
