@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class LeaderboardIO {
 	
 	File leaderboard;
-	String databasePath = "src/PlayersDatabase";
+	String databasePath = "res/PlayersDatabase";
 	File database;
 	FileWriter fileWriter;
 	public ArrayList<Player> playerLeaderboard;
@@ -25,7 +25,7 @@ public class LeaderboardIO {
 		try {
 			database = new File(databasePath);
 			
-			leaderboard = new File("src/Leaderboard");
+			leaderboard = new File("res/Leaderboard");
 			
 			
 			

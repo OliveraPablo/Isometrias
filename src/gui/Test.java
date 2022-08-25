@@ -87,7 +87,7 @@ public class Test extends JFrame {
 		pnQuestion.setBounds(10, 82, 682, 79);
 		pnQuestion.setText(questions[questionCounter].getQuestion());
 		contentPane.add(pnQuestion);
-		imageArea.setIcon(new ImageIcon(questions[questionCounter].getImage()));
+		imageArea.setIcon(new ImageIcon(getClass().getClassLoader().getResource(questions[questionCounter].getImage())));
 		
 		
 		
@@ -149,8 +149,8 @@ public class Test extends JFrame {
 					}
 					questionCounter++;
 					pnQuestion.setText(questions[questionCounter].getQuestion());
-					imageArea.setIcon(new ImageIcon(questions[questionCounter].getImage()));
-						
+					
+					imageArea.setIcon(new ImageIcon(getClass().getClassLoader().getResource(questions[questionCounter].getImage())));
 					
 					counter.setText(String.valueOf(questionCounter));
 				}

@@ -138,8 +138,9 @@ public class AnswersPanel extends JFrame {
 	}
 	public void setQuestionData(JLabel imageArea, JLabel questionText, JLabel answerLb) {
 		Question q = questions.get(questionCounter);
-		ImageIcon img = new ImageIcon(q.getImage());
-		imageArea.setIcon(img);
+		
+		
+		imageArea.setIcon(new ImageIcon(getClass().getClassLoader().getResource(q.getImage())));
 		questionText.setText(q.getQuestion());
 		if(q.getAnswer()) {
 			answerLb.setText("Verdadero");

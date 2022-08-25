@@ -9,7 +9,7 @@ public class Question {
 	
 	
 	public Question(String question, boolean correctAnswer ) {
-		this.imagePath = "src/Images/Empty";
+		this.imagePath = "Empty.png";
 		this.correctAnswer = correctAnswer;
 		this.question = question;
 	}

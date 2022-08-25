@@ -27,8 +27,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JTextPane;
 import java.awt.event.MouseMotionAdapter;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Scanner;
 import javax.swing.border.LineBorder;
@@ -228,7 +231,7 @@ public class MainFrame extends JFrame {
 				ResetColor(pnAntitraslacion);
 				ResetColor(pnPuntoUnido);
 				
-				FileToTextPane("Definitions/isometria", "Isometría: ", paneContent, paneTitle, imageLabel, "src/Images/isometria.png");
+				FileToTextPane("res/isometria", "Isometría: ", paneContent, paneTitle, imageLabel, "isometria.png");
 				
 			}
 			@Override
@@ -263,7 +266,7 @@ public class MainFrame extends JFrame {
 				ResetColor(pnAntitraslacion);
 				ResetColor(pnPuntoUnido);
 				
-				FileToTextPane("Definitions/simetria_axial", "Simetría Axial: ", paneContent, paneTitle, imageLabel, "src/Images/simetriaAxial.png");
+				FileToTextPane("res/simetria_axial", "Simetría Axial: ", paneContent, paneTitle, imageLabel, "simetriaAxial.png");
 			}
 			public void mouseEntered(MouseEvent e) {
 				lblaxial.setForeground(new Color(125, 104, 166));
@@ -301,7 +304,7 @@ public class MainFrame extends JFrame {
 				ResetColor(pnAntitraslacion);
 				ResetColor(pnPuntoUnido);
 				
-				FileToTextPane("Definitions/simetria_central", "Simetría Central: ", paneContent, paneTitle, imageLabel, "src/Images/simetriaCentral.png");
+				FileToTextPane("res/simetria_central", "Simetría Central: ", paneContent, paneTitle, imageLabel, "simetriaCentral.png");
 			}
 			public void mouseEntered(MouseEvent e) {
 				lblCentral.setForeground(new Color(125, 104, 166));
@@ -331,7 +334,7 @@ public class MainFrame extends JFrame {
 				ResetColor(pnAntitraslacion);
 				ResetColor(pnPuntoUnido);
 				
-				FileToTextPane("Definitions/rotacion", "Rotación: ", paneContent, paneTitle, imageLabel, "src/Images/rotacion.png");
+				FileToTextPane("res/rotacion", "Rotación: ", paneContent, paneTitle, imageLabel, "rotacion.png");
 			}
 			public void mouseEntered(MouseEvent e) {
 				lblRotación.setForeground(new Color(125, 104, 166));
@@ -362,7 +365,7 @@ public class MainFrame extends JFrame {
 				ResetColor(pnAntitraslacion);
 				ResetColor(pnPuntoUnido);
 				
-				FileToTextPane("Definitions/traslacion", "Traslación: ", paneContent, paneTitle, imageLabel, "src/Images/traslacion.png");
+				FileToTextPane("res/traslacion", "Traslación: ", paneContent, paneTitle, imageLabel, "traslacion.png");
 			}
 			public void mouseEntered(MouseEvent e) {
 				lbTraslacion.setForeground(new Color(125, 104, 166));
@@ -393,7 +396,7 @@ public class MainFrame extends JFrame {
 				ResetColor(pnTraslacion);
 				ResetColor(pnPuntoUnido);
 			
-				FileToTextPane("Definitions/antitraslacion", "Antitraslación: ", paneContent, paneTitle, imageLabel, "src/Images/antitraslacion.png");
+				FileToTextPane("res/antitraslacion", "Antitraslación: ", paneContent, paneTitle, imageLabel, "antitraslacion.png");
 			}
 			public void mouseEntered(MouseEvent e) {
 				lbAntitraslacion.setForeground(new Color(125, 104, 166));
@@ -423,7 +426,7 @@ public class MainFrame extends JFrame {
 				ResetColor(pnRotacion);
 				ResetColor(pnTraslacion);
 				ResetColor(pnAntitraslacion);
-				FileToTextPane("Definitions/unidas", "Figuras y puntos unidos: ", paneContent, paneTitle, imageLabel, "");
+				FileToTextPane("res/unidas", "Figuras y puntos unidos: ", paneContent, paneTitle, imageLabel, "Empty.png");
 
 				
 			}
@@ -450,8 +453,8 @@ public class MainFrame extends JFrame {
 		});
 		lblNewLabel.setBounds(864, 0, 36, 39);
 		contentPane.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon(MainFrame.class.getResource("/Images/100-1005181_cancel-close-delete-eraser-exit-remove-trash-x-in-red-circle.png")));
-		
+		//lblNewLabel.setIcon(new ImageIcon(".//res//100-1005181_cancel-close-delete-eraser-exit-remove-trash-x-in-red-circle.png"));
+		lblNewLabel.setIcon(new ImageIcon(getClass().getClassLoader().getResource("100-1005181_cancel-close-delete-eraser-exit-remove-trash-x-in-red-circle.png")));
 	
 
 	}
@@ -468,18 +471,27 @@ public class MainFrame extends JFrame {
 	}
 	public void FileToTextPane(String sourcePath, String title, JTextPane textPane, JTextPane titlePane, JLabel imageArea, String imagePath) {
 		File f = new File(sourcePath);
+		//InputStream input = getClass().getResourceAsStream(sourcePath);
+		//InputStream file = getClass().getResourceAsStream(sourcePath);
 		try {
+			//BufferedReader reader = new BufferedReader(new InputStreamReader(file));
 			Scanner scanner = new Scanner(f);
 			String text = "";
+			//String line;
+			//while((line = reader.readLine()) != null) {
+		//		text = text.concat(line);
+				
+		//	}
 			while(scanner.hasNextLine()) {
 				text = text.concat(scanner.nextLine() + "\n");
 			}
+			
 			textPane.setText(text);
 			titlePane.setText(title);
 			//ImageIcon image = new ImageIcon(getClass().getClassLoader().getResource(sourcePath));
-			imageArea.setIcon(new ImageIcon(imagePath));
+			imageArea.setIcon(new ImageIcon(getClass().getClassLoader().getResource(imagePath)));
 			//imageArea.setIcon(image);
-		} catch (FileNotFoundException e1) {
+		} catch (Exception e1) {
 			
 			System.out.println("File not found");
 			e1.printStackTrace();
